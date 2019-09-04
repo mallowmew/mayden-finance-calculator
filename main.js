@@ -37,6 +37,8 @@ form.addEventListener('change', e => {
   }
   // If nothing is wrong
   let amount = formData.amount.value 
+  let adminFee = amount * 0.05 // Calculate 5% admin fee
+  adminFeeElement.innerText = '£' + adminFee.toFixed(2)
 
   overPercentageContainerElement.style = 'display: none'
   overPercentageElement.innerText = ''
@@ -45,18 +47,15 @@ form.addEventListener('change', e => {
     overPercentageContainerElement.style = 'display: block'
     overPercentageElement.innerText = 'Over 90% of maximum loan amount: '
     overPercentageFeeAmountElement.innerText = '+£1000'
-    amount += 1000
+    amount += 1000 // Apply over 90% fee
   }
   else if (amount > (maximumLoan * 0.8)) {
     overPercentageContainerElement.style = 'display: block'
     overPercentageElement.innerText = 'Over 80% of maximum loan amount: '
     overPercentageFeeAmountElement.innerText = '+£500'
-    amount += 500
+    amount += 500 // Apply over 80% fee
   }
-
-  let adminFee = amount * 0.05 // Calculate 5% admin fee
-  adminFeeElement.innerText = '£' + adminFee.toFixed(2)
-  amount += adminFee
+  amount += adminFee // Apply admin fee *after* over% fees, so that it doesn't kick you over the thresholds
 
   totalToPayElement.innerText = '£' + amount.toFixed(2)
 
