@@ -20,21 +20,21 @@ form.addEventListener('change', e => {
   formData.salary = validateSalary(parseInt(form.salary.value))
   formData.repayment = validateRepayment(parseInt(form.repayment.value))
 
+  document.querySelector('#amount-tip').innerText = ''
+  document.querySelector('#salary-tip').innerText = ''
+  document.querySelector('#repayment-tip').innerText = ''
   if (!formData.amount.valid) {
-    console.log(formData.amount.message)
     document.querySelector('#amount-tip').innerText = formData.amount.message
-    return
   }
   if (!formData.salary.valid) {
-    console.log(formData.salary.message)
     document.querySelector('#salary-tip').innerText = formData.salary.message
-    return
   }
   if (!formData.repayment.valid) {
-    console.log(formData.repayment.message)
     document.querySelector('#repayment-tip').innerText = formData.repayment.message
-    return
   } 
+  if (!formData.amount.valid || !formData.salary.valid || !formData.repayment.valid) {
+    return
+  }
   // If nothing is wrong
   let amount = formData.amount.value 
 
