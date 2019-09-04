@@ -5,6 +5,10 @@
 @import 'utils/_functions';
 @import 'utils/_helpers';
 
+body {
+  background: linear-gradient(45deg, $backgroundColor, adjust-hue($backgroundColor, 30deg));
+}
+
 .container {
   position: relative;
   left: 10%;
