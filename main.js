@@ -5,6 +5,7 @@ const maximumLoan = 8000
 const form = document.querySelector('form')
 const adminFeeElement = document.querySelector('#admin-fee')
 const totalToPayElement = document.querySelector('#total-to-pay')
+const overPercentageContainerElement = document.querySelector('#over-percentage-container')
 const overPercentageElement = document.querySelector('#over-percentage')
 const overPercentageFeeAmountElement = document.querySelector('#over-percentage-fee-amount')
 const repaymentTimeElement = document.querySelector('#repayment-time')
@@ -37,14 +38,17 @@ form.addEventListener('change', e => {
   // If nothing is wrong
   let amount = formData.amount.value 
 
+  overPercentageContainerElement.style = 'display: none'
   overPercentageElement.innerText = ''
   overPercentageFeeAmountElement.innerText = ''
   if (amount > (maximumLoan * 0.9)) {
+    overPercentageContainerElement.style = 'display: block'
     overPercentageElement.innerText = 'Over 90% of maximum loan amount: '
     overPercentageFeeAmountElement.innerText = '+£1000'
     amount += 1000
   }
   else if (amount > (maximumLoan * 0.8)) {
+    overPercentageContainerElement.style = 'display: block'
     overPercentageElement.innerText = 'Over 80% of maximum loan amount: '
     overPercentageFeeAmountElement.innerText = '+£500'
     amount += 500
@@ -56,7 +60,8 @@ form.addEventListener('change', e => {
 
   totalToPayElement.innerText = '£' + amount.toFixed(2)
 
-  repaymentTimeElement.innerText = calculateRepaymentPeriod(amount, formData.salary.value, (formData.repayment.value / 100)) + ' months'
+  repaymentTimeElement.parentElement.style = 'display: block'
+  repaymentTimeElement.innerText = calculateRepaymentPeriod(amount, formData.salary.value, (formData.repayment.value / 100))
 })
 
 function validateAmount(value) {
