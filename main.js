@@ -51,10 +51,10 @@ form.addEventListener('change', e => {
   }
 
   let adminFee = amount * 0.05 // Calculate 5% admin fee
-  adminFeeElement.innerText = adminFee
+  adminFeeElement.innerText = '£' + adminFee.toFixed(2)
   amount += adminFee
 
-  totalToPayElement.innerText = amount
+  totalToPayElement.innerText = '£' + amount.toFixed(2)
 })
 
 function validateAmount(value) {
