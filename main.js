@@ -3,12 +3,22 @@
 const form = document.querySelector('form')
 form.addEventListener('change', e => {
   let formData = {}
-  formData.amount = parseInt(form.amount.value)
-  formData.salary = parseInt(form.salary.value)
-  formData.repayment = parseInt(form.repayment.value)
-  console.log(validateAmount(formData.amount))
-  console.log(validateSalary(formData.salary))
-  console.log(validateRepayment(formData.repayment))
+  formData.amount = validateAmount(parseInt(form.amount.value))
+  formData.salary = validateSalary(parseInt(form.salary.value))
+  formData.repayment = validateRepayment(parseInt(form.repayment.value))
+
+  if (!formData.amount.valid) {
+    console.log(formData.amount.message)
+  }
+  if (!formData.salary.valid) {
+    console.log(formData.salary.message)
+  }
+  if (!formData.repayment.valid) {
+    console.log(formData.repayment.message)
+  } 
+  else {
+      console.log('Great! We can do maths now!')
+  }
 })
 
 function validateAmount(value) {
