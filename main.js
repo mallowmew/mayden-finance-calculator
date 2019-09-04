@@ -64,6 +64,8 @@ form.addEventListener('change', e => {
   repaymentTimeElement.innerText = calculateRepaymentPeriod(amount, formData.salary.value, (formData.repayment.value / 100))
 })
 
+form.dispatchEvent(new Event('change'))
+
 function validateAmount(value) {
   if (typeof value === 'number' && !isNaN(value)) {
     if (value >= 1 && value <= 8000) {
@@ -92,7 +94,7 @@ function validateRepayment(value) {
     if (value >= 10 && value <= 100) {
       return {value: value, valid: true, message: 'Repayment OK!'}
     } else {
-      return {value: value, valid: false, message: 'The repayment amount must at least 10%.'}
+      return {value: value, valid: false, message: 'The repayment amount must at least 10%, and not over 100%.'}
     }
   } else {
     return {value: value, valid: false, message: 'The repayment amount you have entered is not a number'}
