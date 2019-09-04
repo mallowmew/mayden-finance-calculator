@@ -5,27 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Finance Calculator</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="main.js" defer></script>
   </head>
   <body>
     <div class="container">
       <h1>Finance Calculator</h1>
       <form>
         <div class="form-group">
-          <label for="amount">The amount you would like to borrow:</label>
-          <input type="text" name="amount" id="amount">
+          <label for="amount">The amount you would like to borrow (£):</label>
+          <input type="number" name="amount" id="amount" min="1" max="8000">
+          <span class="tip" id="amount-tip"></span>
         </div>
         <div class="form-group">
-          <label for="salary">Your expected salary (£):</label>
-          <input type="text" name="salary" id="salary">
+          <label for="salary">Your expected annual salary (£):</label>
+          <input type="number" name="salary" id="salary" min="1" value="25000">
+          <span class="tip" id="salary-tip"></span>
         </div>
         <div class="form-group">
-          <label for="repayment">Monthly repayment % (Min 10%)</label>
-          <input type="text" name="repayment" id="repayment">
+          <label for="repayment">How much of your salary will you pay each month? (minimum 10%)</label>
+          <input type="number" name="repayment" id="repayment" min="10" max="100" value="10">
+          <span class="tip" id="repayment-tip"></span>
         </div>
       </form>
-      
+      <div class="separator"></div>
+      <div class="results">
+        <div>Admin fee (<span id="admin-fee-mult">5%</span>): <span class="number biggerfont" id="admin-fee"></span></div>
+        <div id="over-percentage-container" style="display: none;"><span id="over-percentage"></span> <span class="number biggerfont" id="over-percentage-fee-amount"></span></div>
+        <div>Total to pay: <span class="number biggerfont" id="total-to-pay"></span></div>
+        <div class="align-right" style="display: none;">It will take you <span class="biggerfont" id="repayment-time"></span> months to repay this loan.</div>
+      </div>
     </div>
-
-    
   </body>
 </html>
