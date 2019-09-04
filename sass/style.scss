@@ -23,12 +23,29 @@ form {
   padding: 1px;
 }
 
+label {
+  display: block;
+  width: 85%;
+}
+
 input {
   display: block;
   position: absolute;
   right: 0;
-  bottom: 0;
+  top: 0;
+  width: 100px;
   font-size: 1.6rem;
+
+  :invalid {
+    border: $errorColor;
+  }
+}
+
+.tip {
+  display: block;
+  margin-top: 12px;
+  text-align: right;
+  color: $errorColor;
 }
 
 .separator {
