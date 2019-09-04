@@ -2,6 +2,10 @@
 
 const form = document.querySelector('form')
 form.addEventListener('change', e => {
+  if (!form.amount.value || !form.salary.value || !form.repayment.value) {
+    return // There is nothing to do without input in all 3 fields, return immediately if any are empty
+  }
+
   let formData = {}
   formData.amount = validateAmount(parseInt(form.amount.value))
   formData.salary = validateSalary(parseInt(form.salary.value))
@@ -9,20 +13,26 @@ form.addEventListener('change', e => {
 
   if (!formData.amount.valid) {
     console.log(formData.amount.message)
+    document.querySelector('#amount-tip').innerText = formData.amount.message
+    return
   }
   if (!formData.salary.valid) {
     console.log(formData.salary.message)
+    document.querySelector('#salary-tip').innerText = formData.salary.message
+    return
   }
   if (!formData.repayment.valid) {
     console.log(formData.repayment.message)
+    document.querySelector('#repayment-tip').innerText = formData.repayment.message
+    return
   } 
-  else {
-      console.log('Great! We can do maths now!')
-  }
+  // If nothing is wrong
+  console.log('Great! We can do maths now!')
+  
 })
 
 function validateAmount(value) {
-  if (typeof value === 'number') {
+  if (typeof value === 'number' && !isNaN(value)) {
     if (value >= 1 && value <= 8000) {
       return {valid: true, message: 'Amount is OK!'}
     } else {
@@ -34,7 +44,7 @@ function validateAmount(value) {
 }
 
 function validateSalary(value) {
-  if (typeof value === 'number') {
+  if (typeof value === 'number' && !isNaN(value)) {
     if (value > 0) {
       return {valid: true, message: 'Salary is OK!'}
     } else {
@@ -45,7 +55,7 @@ function validateSalary(value) {
 }
 
 function validateRepayment(value) {
-  if (typeof value === 'number') {
+  if (typeof value === 'number' && !isNaN(value)) {
     if (value >= 10 && value <= 100) {
       return {valid: true, message: 'Repayment is OK!'}
     } else {
