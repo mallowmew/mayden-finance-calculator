@@ -55,6 +55,8 @@ form.addEventListener('change', e => {
   amount += adminFee
 
   totalToPayElement.innerText = '£' + amount.toFixed(2)
+
+  repaymentTimeElement.innerText = calculateRepaymentPeriod(amount, formData.salary.value, (formData.repayment.value / 100)) + ' months'
 })
 
 function validateAmount(value) {
@@ -92,3 +94,7 @@ function validateRepayment(value) {
   }
 }
 
+function calculateRepaymentPeriod(amount, annualSalary, repay) {
+  let monthlyPayment = (annualSalary / 12) * repay
+  return Math.ceil(amount / monthlyPayment)
+}
