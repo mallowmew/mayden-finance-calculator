@@ -70,7 +70,7 @@ function validateAmount(value) {
     if (value >= 1 && value <= 8000) {
       return {value: value, valid: true, message: 'Amount OK!'}
     } else {
-      return {value: value, valid: false, message: 'The loan amount must be between £1 and £8000.'}
+      return {value: value, valid: false, message: `The loan amount must be between £1 and £${maximumLoan}.`}
     }
   } else {
     return {value: value, valid: false, message: 'The loan amount you have entered is not a number.'}
