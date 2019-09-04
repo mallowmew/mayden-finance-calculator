@@ -13,15 +13,15 @@
       <form>
         <div class="form-group">
           <label for="amount">The amount you would like to borrow:</label>
-          <input type="text" name="amount" id="amount">
+          <input type="number" name="amount" id="amount" min="1" max="8000">
         </div>
         <div class="form-group">
           <label for="salary">Your expected salary (£):</label>
-          <input type="text" name="salary" id="salary">
+          <input type="number" name="salary" id="salary" min="0">
         </div>
         <div class="form-group">
           <label for="repayment">Monthly repayment % (Min 10%)</label>
-          <input type="text" name="repayment" id="repayment">
+          <input type="number" name="repayment" id="repayment" min="10" max="100" value="10">
         </div>
       </form>
 
