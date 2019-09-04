@@ -62,35 +62,35 @@ form.addEventListener('change', e => {
 function validateAmount(value) {
   if (typeof value === 'number' && !isNaN(value)) {
     if (value >= 1 && value <= 8000) {
-      return {value: value, valid: true, message: 'Amount is OK!'}
+      return {value: value, valid: true, message: 'Amount OK!'}
     } else {
-      return {value: value, valid: false, message: 'Amount is not in range.'}
+      return {value: value, valid: false, message: 'The loan amount must be between £1 and £8000.'}
     }
   } else {
-    return {value: value, valid: false, message: 'Amount entered is not a number.'}
+    return {value: value, valid: false, message: 'The loan amount you have entered is not a number.'}
   }
 }
 
 function validateSalary(value) {
   if (typeof value === 'number' && !isNaN(value)) {
     if (value > 0) {
-      return {value: value, valid: true, message: 'Salary is OK!'}
+      return {value: value, valid: true, message: 'Salary OK!'}
     } else {
-      return {value: value, valid: false, message: 'Salary must be above 0'}
+      return {value: value, valid: false, message: 'Your annual salary must be above 0 for this calculator to work.'}
     }
   }
-  return {value: value, valid: false, message: 'Salary is not a number.'}
+  return {value: value, valid: false, message: 'The salary you have entered is not a number.'}
 }
 
 function validateRepayment(value) {
   if (typeof value === 'number' && !isNaN(value)) {
     if (value >= 10 && value <= 100) {
-      return {value: value, valid: true, message: 'Repayment is OK!'}
+      return {value: value, valid: true, message: 'Repayment OK!'}
     } else {
-      return {value: value, valid: false, message: 'Repayment is not in range.'}
+      return {value: value, valid: false, message: 'The repayment amount must at least 10%.'}
     }
   } else {
-    return {value: value, valid: false, message: 'Repayment is not a number'}
+    return {value: value, valid: false, message: 'The repayment amount you have entered is not a number'}
   }
 }
 
