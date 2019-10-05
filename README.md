@@ -1,4 +1,11 @@
 # Mayden Academy Finance Calculator Challenge
+Module 6 Challenge: Use frontend technologies to develop a finance calculator for Mayden Academy.
+
+I quite like the pattern I adopted for frontend validation (`main.js`) and want to use it again somewhere.
+
+I decided to use Sass just for practice.
+
+## Challenge
 Build a finance calculator that accepts:
 
 + The amount you would like to borrow (£)
