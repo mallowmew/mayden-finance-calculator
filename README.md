@@ -1,4 +1,4 @@
-# Challenge
+# Mayden Academy Finance Calculator Challenge
 Build a finance calculator that accepts:
 
 + The amount you would like to borrow (£)
