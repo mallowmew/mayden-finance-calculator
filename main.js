@@ -69,15 +69,11 @@ function validateAmount(value) {
   if (typeof value === 'number' && !isNaN(value)) {
     if (value >= 1 && value <= 8000) {
       return {
-        value: value, 
-        valid: true, 
-        message: 'Amount OK!'
+        value: value, valid: true, message: 'Amount OK!'
       }
     } else {
       return {
-        value: value, 
-        valid: false, 
-        message: `The loan amount must be between £1 and £${maximumLoan}.`
+        value: value, valid: false, message: `The loan amount must be between £1 and £${maximumLoan}.`
       }
     }
   } else {
